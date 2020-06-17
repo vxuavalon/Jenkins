@@ -40,7 +40,7 @@ pipeline{
           steps{
               script{
                  npmHome = tool "node"
-                 sh "export Node_HOME=${npmHome} && export PATH=\$NODE_HOME/bin:\$PATH && ${gradeHome}/bin/npm -v"
+                 sh "export NODE_HOME=${npmHome} && export PATH=\$NODE_HOME/bin:\$PATH && ${gradeHome}/bin/npm -v"
               }
               
           }
