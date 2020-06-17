@@ -35,7 +35,17 @@ pipeline{
                   sh "${gradeHome}/bin/gradle -v"
                }
            }
-         }    
+         } 
+      stage("npmbuild"){
+          steps{
+              script{
+                 npmHome = tool "node"
+                 sh "${gradeHome}/bin/npm -v"
+              }
+              
+          }
+         
+      }   
        }
     }
 
