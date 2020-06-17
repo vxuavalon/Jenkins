@@ -22,7 +22,17 @@ pipeline{
                   sh "${antHome}/bin/ant ${buildShell}"
                }
            }
+       stage("gradlebuild"){
+           steps{
+               script{
+                  gradeHome = tool "GRADLE"
+                  sh "${gradeHome}/bin/gradle -v"
+               }
+           }
            
+       
+           }
+       }    
        }
     }
 }
