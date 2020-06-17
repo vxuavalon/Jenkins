@@ -1,17 +1,28 @@
+#!groovy
+String buildShell = "${env.buildShell}"
 pipeline{
     agent  {node {label "master"}}
     
     
     stages{
-       stage("build"){
+       stage("mavenbuild"){
           steps{
              script{
              
-               mvnHome = tools "M2"
-               sh "${mvnHome/bin/mvn -v}"
+               mvnHome = tool "m2"
+               sh "${mvnHome}/bin/mvn ${buildShell}"
           
             }
          }
+       }
+       stage("antbuild"){
+           steps{
+               script{
+                  antHome = tool "ant"
+                  sh "${antHome}/bin/ant ${buildShell}"
+               }
+           }
+           
        }
     }
 }
