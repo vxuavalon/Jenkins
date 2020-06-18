@@ -40,7 +40,7 @@ pipeline{
           steps{
               script{
                  npmHome = tool "node"
-                 sh "${npmHome}/lib/node_modules/npm -v"
+                 sh "${npmHome}/bin/npm -v"
               }
               
           }
