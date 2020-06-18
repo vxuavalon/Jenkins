@@ -1,11 +1,21 @@
 #!groovy
+@Library('jenkinslibrary@master') _
+def build = new org.devops.build()
+String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
 pipeline{
     agent  {node {label "master"}}
     
-    
-    stages{
-       stage("mavenbuild"){
+      stages{
+
+       stage("build"){
+          steps{
+            script{
+               build.Build(buildType,buildShell)
+            }
+          }
+       }
+       /*stage("mavenbuild"){
           steps{
              script{
              
@@ -45,7 +55,7 @@ pipeline{
               
           }
          
-      }   
+      } */  
        }
     }
 
