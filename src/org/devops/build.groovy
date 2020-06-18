@@ -7,10 +7,11 @@ def Build(buildType,buildShell){
     
     println("current buildtype is ${buildType}")
     buildHome = tool buildTools[buildType]
-    if (${buildType=="npm"}){
-        sh """export NODE_HOME=${npmHome} 
+    if ("${buildType}"=="npm"}){
+        sh """
+        export NODE_HOME=${buildHome} 
         export PATH=\$NODE_HOME/bin:\$PATH 
-        ${npmHome}/bin/npm -v"""
+        ${buildHome}/bin/npm -v"""
     }else{
         sh"${buildHome}/bin/${buildType} ${buildSHell}"
     }
