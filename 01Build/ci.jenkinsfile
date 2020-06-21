@@ -1,7 +1,11 @@
 #!groovy
 @Library('jenkinslibrary') _
+
+//func from shared library
 def build = new org.devops.build()
 def deployment = new org.devops.deploy()
+def tools = new org.devops.tools()
+
 String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
 string hostname="${env.hostname}"
@@ -15,6 +19,7 @@ pipeline{
        stage("checkOut"){
           steps{
              script{
+                tools.PrintMes("Get code","green")
                 checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7f9447d5-6b05-4f03-a590-05d4ba0ac2b4', url: "${srcUrl}"]]])
              }
           }
@@ -22,6 +27,7 @@ pipeline{
        stage("build"){
           steps{
             script{
+               tools.PrintMes("Build code","green")
                build.Build(buildType,buildShell)
               // deployment.AnsibleDeploy(hostname,"-m ping")
             }
