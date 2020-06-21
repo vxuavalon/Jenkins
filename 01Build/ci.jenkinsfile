@@ -14,7 +14,7 @@ string branchName = "${env.branchName}"
 
 if ("${runOpts}"=="Githubpush"){
    branchName = branch - "refs/heads/"
-   currentBuild.description = "Trigger by ${username} ${ref}"
+   currentBuild.description = "Trigger by ${username} ${branch}"
   }
 
 
