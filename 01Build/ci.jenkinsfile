@@ -19,11 +19,11 @@ pipeline{
              }
           }
        } 
-       /*stage("build"){
+       stage("build"){
           steps{
             script{
                build.Build(buildType,buildShell)
-               deployment.AnsibleDeploy(hostname,"-m ping")
+              // deployment.AnsibleDeploy(hostname,"-m ping")
             }
           }
        }
