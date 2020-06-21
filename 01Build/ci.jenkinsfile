@@ -19,7 +19,7 @@ pipeline{
        stage("checkOut"){
           steps{
              script{
-                if ("${runOpts}"=="GithubPush"){
+                if ("${runOpts}"=="Githubpush"){
                    branchName = branch - "refs/heads/"
                 }
                 println("${branchName}")
