@@ -19,6 +19,10 @@ pipeline{
        stage("checkOut"){
           steps{
              script{
+                if ("${runOpts}"=="GithubPush"){
+                   branchName = branch - "refs/heads/"
+                }
+                println("${branchName}")
                 tools.PrintMes("Get code","green")
                 checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7f9447d5-6b05-4f03-a590-05d4ba0ac2b4', url: "${srcUrl}"]]])
              }
