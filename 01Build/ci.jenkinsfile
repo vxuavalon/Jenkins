@@ -5,7 +5,7 @@
 def build = new org.devops.build()
 def deployment = new org.devops.deploy()
 def tools = new org.devops.tools()
-
+def toemail = new org.devops.toemail()
 String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
 string hostname="${env.hostname}"
@@ -85,6 +85,25 @@ pipeline{
          
       } */  
        }
+      post{
+          always{
+              script{
+                 println("always")
+              }
+          }
+          success{
+              script{
+                 println("scuccess")
+                 toemail.Email("sucess","userEmail")
+              }
+          }
+          failure{
+              script{
+                 println("scuccess")
+                 toemail.Email("failed","userEmail")
+              }
+          }
+      } 
     }
 
    
