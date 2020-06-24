@@ -94,13 +94,13 @@ pipeline{
           success{
               script{
                  println("scuccess")
-                 toemail.Email("sucess",userEmail)
+                 //toemail.Email("sucess",userEmail)
               }
           }
           failure{
               script{
                  println("scuccess")
-                 toemail.Email("failed",userEmail)
+                 //toemail.Email("failed",userEmail)
               }
           }
       } 
