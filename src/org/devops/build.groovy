@@ -3,7 +3,7 @@ package org.devops
 
 def Build(buildType,buildShell){
     
-    def buildTools = ["mvn":"m2","ant":"ant","gradle":"GRADLE","npm":"node"]
+    def buildTools = ["mvn":"m2","ant":"ant","gradle":"gradle","npm":"node"]
     
     println("current buildtype is ${buildType}")
     buildHome = tool buildTools[buildType]
