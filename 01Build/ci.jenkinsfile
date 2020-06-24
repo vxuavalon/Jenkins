@@ -8,11 +8,11 @@ def tools = new org.devops.tools()
 //def toemail = new org.devops.toemail()
 String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
-/*string hostname="${env.hostname}"
+//string hostname="${env.hostname}"
 string srcUrl = "${env.srcURL}"
 string branchName = "${env.branchName}"
 
-if ("${runOpts}"=="Githubpush"){
+/*if ("${runOpts}"=="Githubpush"){
    branchName = branch - "refs/heads/"
    currentBuild.description = "Trigger by ${username} ${branch}"
   }*/
@@ -24,16 +24,16 @@ pipeline{
     
       stages{
        
-       /*stage("checkOut"){
+       stage("checkOut"){
           steps{
              script{
                 
                 println("${branchName}")
                 tools.PrintMes("Get code","green")
-                checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '7f9447d5-6b05-4f03-a590-05d4ba0ac2b4', url: "${srcUrl}"]]])
+                checkout([$class: 'GitSCM', branches: [[name: "${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd765b66d-a057-4e24-a23c-bc2ff21c64f8', url: "${srcUrl}"]]])
              }
           }
-       }*/
+       }
        stage("build"){
           steps{
             script{
