@@ -30,7 +30,7 @@ pipeline{
                 
                 println("${branchName}")
                 tools.PrintMes("Get code","green")
-                checkout([$class: 'GitSCM', branches: [[name: "${branchname}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd765b66d-a057-4e24-a23c-bc2ff21c64f8', url: "${srcUrl}"]]])
+                checkout([$class: 'GitSCM', branches: [[name: "${branchName}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd765b66d-a057-4e24-a23c-bc2ff21c64f8', url: "${srcUrl}"]]])
              }
           }
        }
