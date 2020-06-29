@@ -50,7 +50,7 @@ pipeline{
             steps{
                script{
                   tools.PrintMes("Scan code","green")
-                  sonarq.Sonarscan("${JOB_NAME}","${JOB_NAME}","src")
+                  sonarq.Sonarscan("demo-maven-service","demo-maven-service","src")
                }
             }
          }
