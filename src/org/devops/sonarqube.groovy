@@ -2,12 +2,12 @@ package org.devops
 
 //scan
 def SonarScan(projectName,projectDesc，projectPath){
-
+   def scannerHome="/usr/local/sonar-scanner-4.3.0.2102-linux"
    def sonarServer = "http://192.168.1.109:19000"
    def sonarDate = sh  returnStdout: true, script: 'date  +%Y%m%d%H%M%S'
    sonarDate = sonarDate - "\n"
    sh """
-    sonar-scanner -Dsonar.host.url=${sonarServer} \
+    ${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${sonarServer} \
     -Dsonar.projectKey=${projectName} \
     -Dsonar.projectName=${projectName} \
     -Dsonar.projectVersion=${sonarDate} \
