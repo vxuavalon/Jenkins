@@ -63,7 +63,7 @@ pipeline{
                              -Dsonar.projectName=${projectName} -Dsonar.projectVersion=${sonarDate} -Dsonar.ws.timeout=30 \
                              -Dsonar.projectDescription=${JOB_NAME} -Dsonar.links.homepage=http://www.baidu.com \
                              -Dsonar.sources=src/ -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.binaries=target/classes \
-                             -Dsonar.java.test.binaries=target/test-classes -Dsonar.java.surefire.report=target/surefire-report -Dsonar.branch.name=${branchName}
+                             -Dsonar.java.test.binaries=target/test-classes -Dsonar.java.surefire.report=target/surefire-report -Dsonar.branch.name=${branchName} -X
                            """
                 
          }
