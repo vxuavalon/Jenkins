@@ -50,7 +50,7 @@ pipeline{
             steps{
                script{
                   tools.PrintMes("Scan code","green")
-                  sonar.SonarScan("${JOB_NAME}","${JOB_NAME}","src")
+                  sonar.Sonarscan("${JOB_NAME}","${JOB_NAME}","src")
                }
             }
          }
