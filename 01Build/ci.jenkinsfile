@@ -6,7 +6,7 @@ def build = new org.devops.build()
 //def deployment = new org.devops.deploy()
 def tools = new org.devops.tools()
 def toemail = new org.devops.toemail()
-def sonarq = new org.devops.sonarqube()
+//def sonarq = new org.devops.sonarqube()
 //env
 String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
@@ -50,7 +50,24 @@ pipeline{
             steps{
                script{
                   tools.PrintMes("Scan code","green")
-                  sonarq.Sonarscan("demo-maven-service","demo-maven-service","src")
+                  echo 'This is a sonar step' 
+                  def sonarqubeScannerHome = tool name: 'sonar-scanner'
+                  echo sonarqubeScannerHome
+                         withSonarQubeEnv('sonarqube-test') {
+                         def sonarDate = sh  returnStdout: true, script: 'date  +%Y%m%d%H%M%S'
+                         sonarDate = sonarDate - "\n"
+                         def projectName = "demo-maven-service"
+                         def projectPath = "src"
+                         sh """ 
+                             ${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectName} \
+                             -Dsonar.projectName=${projectName} -Dsonar.projectVersion=${sonarDate} -Dsonar.ws.timeout=30 \
+                             -Dsonar.projectDescription=${projectDesc} -Dsonar.links.homepage=http://www.baidu.com \
+                             -Dsonar.sources=${projectPath} -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.binaries=target/classes \
+                             -Dsonar.java.test.binaries=target/test-classes -Dsonar.java.surefire.report=target/surefire-reports
+                           """
+                
+         }
+                  
                }
             }
          }
