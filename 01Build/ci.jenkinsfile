@@ -6,7 +6,7 @@ def build = new org.devops.build()
 //def deployment = new org.devops.deploy()
 def tools = new org.devops.tools()
 def toemail = new org.devops.toemail()
-def sonar = new org.devops.sonarqube()
+def sonarq = new org.devops.sonarqube()
 //env
 String buildType = "${env.Type}"
 String buildShell = "${env.buildShell}"
@@ -50,7 +50,7 @@ pipeline{
             steps{
                script{
                   tools.PrintMes("Scan code","green")
-                  sonar.Sonarscan("${JOB_NAME}","${JOB_NAME}","src")
+                  sonarq.Sonarscan("${JOB_NAME}","${JOB_NAME}","src")
                }
             }
          }
