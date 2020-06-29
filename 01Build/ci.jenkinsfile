@@ -56,13 +56,13 @@ pipeline{
                          withSonarQubeEnv('sonarqube-test') {
                          def sonarDate = sh  returnStdout: true, script: 'date  +%Y%m%d%H%M%S'
                          sonarDate = sonarDate - "\n"
-                         def projectName = "demo-maven-service"
-                         def projectPath = "src"
+                         def projectName = "demo-maven-service-1"
+                  
                          sh """ 
                              ${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectName} \
                              -Dsonar.projectName=${projectName} -Dsonar.projectVersion=${sonarDate} -Dsonar.ws.timeout=30 \
                              -Dsonar.projectDescription=${JOB_NAME} -Dsonar.links.homepage=http://www.baidu.com \
-                             -Dsonar.sources=${projectPath} -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.binaries=target/classes \
+                             -Dsonar.sources=src/ -Dsonar.sourceEncoding=UTF-8 -Dsonar.java.binaries=target/classes \
                              -Dsonar.java.test.binaries=target/test-classes -Dsonar.java.surefire.report=target/surefire-reports
                            """
                 
